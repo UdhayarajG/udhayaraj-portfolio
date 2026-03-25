@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Udhayaraj G — Creative Designer & Videographer | Dubai</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --accent: #4ade80;
+    --accent2: #86efac;
+    --text: #f0ede8;
+    --muted: #888;
+    --border: #2a2a2a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(14,14,14,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.2rem;
+    letter-spacing: -0.5px;
+    color: var(--text); text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(74,222,128,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(134,239,172,0.05) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 850px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(74,222,128,0.12);
+    border: 1px solid rgba(74,222,128,0.3);
+    color: var(--accent);
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 100px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800; line-height: 1.05; letter-spacing: -2px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+
+  .hero-sub {
+    margin-top: 1.5rem; font-size: 1rem; color: var(--muted);
+    max-width: 580px; font-weight: 300; line-height: 1.8;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-contact-bar {
+    margin-top: 1.5rem;
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    font-size: 0.82rem; color: var(--muted);
+    animation: fadeUp 0.6s 0.25s ease both;
+  }
+  .hero-contact-bar span { display: flex; align-items: center; gap: 0.4rem; }
+  .hero-contact-bar a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .hero-contact-bar a:hover { color: var(--accent); }
+  .visa-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2);
+    color: var(--accent2); font-size: 0.72rem; padding: 0.3rem 0.8rem;
+    border-radius: 100px; margin-top: 0.8rem;
+  }
+  .hero-cta {
+    margin-top: 1.8rem;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn {
+    padding: 0.85rem 2rem; border-radius: 6px;
+    font-size: 0.9rem; font-weight: 400;
+    text-decoration: none; transition: all 0.2s; cursor: none;
+  }
+  .btn-primary { background: var(--accent); color: #0e0e0e; border: 1px solid var(--accent); font-weight: 600; }
+  .btn-primary:hover { background: transparent; color: var(--accent); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--muted); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    animation: fadeUp 0.6s 0.6s ease both;
+  }
+  .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s infinite; }
+  @keyframes scrollPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+  section { padding: 6rem 4rem; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  h2 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1.5rem; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--muted); font-size: 1rem; font-weight: 300; margin-bottom: 1rem; line-height: 1.8; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; transition: border-color 0.3s, transform 0.3s; }
+  .stat-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .stat-number { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 0.3rem; }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  .marquee-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.2rem 0; overflow: hidden; background: var(--surface); }
+  .marquee-track { display: flex; gap: 3rem; animation: marquee 25s linear infinite; white-space: nowrap; }
+  .marquee-item { display: flex; align-items: center; gap: 1rem; font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .marquee-dot { color: var(--accent); font-size: 1.2rem; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .skills-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .skills-categories { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem; }
+  .skill-category { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: border-color 0.3s, transform 0.3s; }
+  .skill-category:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .skill-cat-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag { background: var(--surface); border: 1px solid var(--border); color: var(--text); font-size: 0.78rem; padding: 0.3rem 0.8rem; border-radius: 100px; transition: all 0.2s; }
+  .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .service-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem 2rem; transition: all 0.3s; }
+  .service-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+  .service-num { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; color: rgba(74,222,128,0.1); line-height: 1; margin-bottom: 0.8rem; }
+  .service-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .service-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; }
+  .service-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
+
+  .brands-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 3rem; }
+  .brand-card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1rem; text-align: center; transition: all 0.3s; }
+  .brand-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .brand-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .brand-name { font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .brand-industry { font-size: 0.68rem; color: var(--muted); }
+
+  .exp-list { margin-top: 3rem; }
+  .exp-item { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); transition: padding 0.3s; }
+  .exp-item:hover { padding-left: 1rem; }
+  .exp-period { font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-bottom: 0.3rem; }
+  .exp-location { font-size: 0.75rem; color: var(--muted); }
+  .exp-company { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .exp-role { display: inline-block; font-size: 0.78rem; color: #0e0e0e; background: var(--accent); padding: 0.2rem 0.8rem; border-radius: 100px; margin-bottom: 1rem; font-weight: 600; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li { font-size: 0.875rem; color: var(--muted); line-height: 1.7; padding: 0.25rem 0 0.25rem 1.2rem; position: relative; }
+  .exp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 0.4rem; }
+
+  .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s; }
+  .edu-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .edu-degree { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .edu-school { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.3rem; }
+  .edu-year { font-size: 0.75rem; color: var(--accent); }
+
+  .lang-grid { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+  .lang-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 2.5rem; text-align: center; transition: all 0.3s; }
+  .lang-card:hover { border-color: var(--accent); }
+  .lang-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+  .lang-level { font-size: 0.75rem; color: var(--accent); margin-top: 0.2rem; }
+
+  .contact-section { background: var(--surface); border-top: 1px solid var(--border); text-align: center; }
+  .contact-sub { color: var(--muted); margin-bottom: 3rem; font-size: 1rem; font-weight: 300; line-height: 1.8; }
+  .contact-cards { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .contact-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; text-decoration: none; color: var(--text); transition: all 0.2s; cursor: none; min-width: 160px; }
+  .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .contact-card-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .contact-card-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+  .contact-card-value { font-size: 0.82rem; }
+
+  footer { padding: 2rem 4rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--muted); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 6rem 1.5rem 4rem; }
+    .about-grid, .skills-categories, .services-grid, .edu-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="#" class="nav-logo">Udhayaraj <span>G</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Open to Freelance & Full-Time Opportunities</div>
+    <h1>Creative Designer,<br/>Videographer &<br/><em>Visual Storyteller</em></h1>
+    <p class="hero-sub">Senior Creative Designer & Videographer with 5+ years of experience delivering end-to-end visual solutions — from brand identity and motion graphics to video production and social media campaigns across healthcare, skincare, and tech sectors.</p>
+    <div class="hero-contact-bar">
+      <span>📍 Dubai, UAE</span>
+      <span>📧 <a href="mailto:Udhayaraj.bca@gmail.com">Udhayaraj.bca@gmail.com</a></span>
+      <span>📞 <a href="tel:+971506302960">+971 50 630 2960</a></span>
+      <span>🎨 <a href="https://www.playbook.com/s/udhayarajg/Portfolio" target="_blank">Portfolio</a></span>
+    </div>
+    <div><span class="visa-badge">✅ Company Sponsored UAE Visa</span></div>
+    <div class="hero-cta">
+      <a href="https://www.playbook.com/s/udhayarajg/Portfolio" target="_blank" class="btn btn-primary">View Portfolio →</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot">●</span> Video Production</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Graphic Design</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Motion Graphics</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Brand Identity</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Product Photography</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Social Media Content</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Generative AI Tools</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Color Grading</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Live Streaming</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> UI/UX Design</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Video Production</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Graphic Design</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Motion Graphics</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Brand Identity</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Product Photography</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Social Media Content</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Generative AI Tools</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Color Grading</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> Live Streaming</span>
+    <span class="marquee-item"><span class="marquee-dot">●</span> UI/UX Design</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <p class="section-label">About Me</p>
+      <h2>Where creativity<br/>meets execution</h2>
+      <p>Hey! I'm Udhayaraj G — a Senior Creative Designer and Videographer based in Dubai, UAE. With 5+ years in the industry, I specialise in delivering end-to-end visual solutions that help brands communicate powerfully across digital and offline platforms.</p>
+      <p>From skincare and pharmaceutical brands to tech companies and educational institutions, I've worked across diverse sectors — handling everything from concept and shooting to editing, color grading, and final delivery. I also leverage Generative AI tools to accelerate creative workflows.</p>
+      <p>Originally from Coimbatore, Tamil Nadu — with hands-on experience in short film production as an Associate Director, Writer, and Editor since 2017.</p>
+      <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="https://www.playbook.com/s/udhayarajg/Portfolio" target="_blank" class="btn btn-primary">View Portfolio →</a>
+        <a href="mailto:Udhayaraj.bca@gmail.com" class="btn btn-outline">Email Me</a>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-card"><div class="stat-number">12+</div><div class="stat-label">Brands Worked With</div></div>
+      <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">Companies</div></div>
+      <div class="stat-card"><div class="stat-number">∞</div><div class="stat-label">Creative Ideas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <p class="section-label">Skills & Tools</p>
+  <h2>My Full Creative Toolkit</h2>
+  <div class="skills-categories">
+    <div class="skill-category">
+      <div class="skill-cat-title">🎬 Videography & Editing</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Video Production</span>
+        <span class="skill-tag">Product Photography</span>
+        <span class="skill-tag">Short-Form Videos</span>
+        <span class="skill-tag">Color Grading</span>
+        <span class="skill-tag">Sound Sync</span>
+        <span class="skill-tag">Multi-Cam Live Streaming</span>
+        <span class="skill-tag">Clinic Video Shoots</span>
+        <span class="skill-tag">E-commerce Retouching</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-title">🎨 Design & Branding</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Graphic Design</span>
+        <span class="skill-tag">Brand Identity</span>
+        <span class="skill-tag">Motion Graphics</span>
+        <span class="skill-tag">Social Media Creatives</span>
+        <span class="skill-tag">Print Materials</span>
+        <span class="skill-tag">Campaign Visuals</span>
+        <span class="skill-tag">UI/UX Design</span>
+        <span class="skill-tag">Brochures & Flyers</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-title">🛠️ Software & Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Adobe Premiere Pro</span>
+        <span class="skill-tag">After Effects</span>
+        <span class="skill-tag">DaVinci Resolve</span>
+        <span class="skill-tag">Photoshop</span>
+        <span class="skill-tag">Illustrator</span>
+        <span class="skill-tag">InDesign</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Adobe XD</span>
+        <span class="skill-tag">Sketch</span>
+        <span class="skill-tag">FCP</span>
+        <span class="skill-tag">Logic Pro</span>
+        <span class="skill-tag">Adobe Audition</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-title">📱 Digital & Leadership</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Generative AI Tools</span>
+        <span class="skill-tag">Social Media Management</span>
+        <span class="skill-tag">Google & Meta Ads</span>
+        <span class="skill-tag">Email Marketing</span>
+        <span class="skill-tag">HTML & CSS</span>
+        <span class="skill-tag">WordPress</span>
+        <span class="skill-tag">Project Management</span>
+        <span class="skill-tag">Content Strategy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">What I Do</p>
+  <h2>End-to-End Creative Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">🎬</div>
+      <div class="service-title">Video Production</div>
+      <div class="service-desc">Full-cycle video production — concept, shooting, editing, color grading, and delivery. Promotional videos, product videos, short-form reels, and brand films.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">📸</div>
+      <div class="service-title">Product Photography</div>
+      <div class="service-desc">High-quality product and clinic photography with professional retouching. E-commerce ready images for skincare, pharmaceutical, and lifestyle brands.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">✨</div>
+      <div class="service-title">Motion Graphics</div>
+      <div class="service-desc">Dynamic animations, kinetic typography, and motion-driven visual effects that bring static content to life across digital platforms.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">🎨</div>
+      <div class="service-title">Graphic & Brand Design</div>
+      <div class="service-desc">Brand identity, marketing collateral, social media creatives, brochures, flyers, and event materials — crafted with brand consistency at the core.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">🤖</div>
+      <div class="service-title">AI-Powered Content</div>
+      <div class="service-desc">Leveraging Generative AI tools to create AI-based videos and images that accelerate content production and unlock new visual storytelling possibilities.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">📡</div>
+      <div class="service-title">Live Streaming</div>
+      <div class="service-desc">Multi-camera live streaming for events, launches, and broadcasts on YouTube and social media platforms, with full studio setup and management.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands" class="brands-section">
+  <p class="section-label">Brands I've Worked With</p>
+  <h2>Trusted by Great Brands</h2>
+  <div class="brands-grid">
+    <div class="brand-card"><div class="brand-icon">💊</div><div class="brand-name">Allier Paris</div><div class="brand-industry">Skincare · Dubai</div></div>
+    <div class="brand-card"><div class="brand-icon">✨</div><div class="brand-name">Caline</div><div class="brand-industry">Skincare · Dubai</div></div>
+    <div class="brand-card"><div class="brand-icon">🌿</div><div class="brand-name">Kalos</div><div class="brand-industry">Pharmaceutical · Dubai</div></div>
+    <div class="brand-card"><div class="brand-icon">💉</div><div class="brand-name">Reviva</div><div class="brand-industry">Skincare · Dubai</div></div>
+    <div class="brand-card"><div class="brand-icon">🔬</div><div class="brand-name">JBP Curacen</div><div class="brand-industry">Pharmaceutical · Dubai</div></div>
+    <div class="brand-card"><div class="brand-icon">🌱</div><div class="brand-name">Auravedic</div><div class="brand-industry">Ayurvedic · India</div></div>
+    <div class="brand-card"><div class="brand-icon">🍃</div><div class="brand-name">ByNature</div><div class="brand-industry">Natural Products · India</div></div>
+    <div class="brand-card"><div class="brand-icon">🏥</div><div class="brand-name">Sri Ramakrishna Hospital</div><div class="brand-industry">Healthcare · India</div></div>
+    <div class="brand-card"><div class="brand-icon">❤️</div><div class="brand-name">Health Basix</div><div class="brand-industry">Healthcare · India</div></div>
+    <div class="brand-card"><div class="brand-icon">💻</div><div class="brand-name">eMedHub</div><div class="brand-industry">Health Tech · India</div></div>
+    <div class="brand-card"><div class="brand-icon">🎥</div><div class="brand-name">V ROOM Studios</div><div class="brand-industry">Production · India</div></div>
+    <div class="brand-card"><div class="brand-icon">📍</div><div class="brand-name">Namma Covai</div><div class="brand-industry">YouTube · India</div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Work Journey</p>
+  <h2>Professional Experience</h2>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-period">Feb 2025 — Present</div>
+        <div class="exp-location">📍 Dubai, UAE</div>
+      </div>
+      <div>
+        <div class="exp-company">Novanos Para Pharmaceuticals Products Trading LLC</div>
+        <span class="exp-role">Videographer & Graphic Designer</span>
+        <ul class="exp-bullets">
+          <li>Executed creative concepts for aesthetic skincare and pharmaceutical brands including Allier Paris, Caline, Kalos, Reviva, and JBP Curacen.</li>
+          <li>Designed high-impact social media creatives, marketing collateral, brand identity, campaign visuals, flyers, brochures, and event print materials.</li>
+          <li>Handled product photography and videography, clinic video shoots, and promotional brand videos.</li>
+          <li>Edited videos using Premiere Pro, After Effects, and DaVinci Resolve with color correction and sound synchronisation.</li>
+          <li>Created AI-based videos and images using Generative AI tools to enhance visual storytelling and accelerate content production.</li>
+          <li>Collaborated with marketing and sales teams to maintain brand consistency across digital and offline platforms.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-period">Aug 2023 — Nov 2024</div>
+        <div class="exp-location">📍 India</div>
+      </div>
+      <div>
+        <div class="exp-company">Bright Bridge InfoTech Pvt Ltd</div>
+        <span class="exp-role">Graphic Designer & Video Editor</span>
+        <ul class="exp-bullets">
+          <li>Worked as Graphic Designer and Video Editor for multiple brands including Auravedic, ByNature, Sri Ramakrishna Hospital, and Health Basix.</li>
+          <li>Designed product branding assets, social media creatives, promotional visuals, and digital campaign assets.</li>
+          <li>Edited marketing and informational videos aligned with brand communication goals.</li>
+          <li>Coordinated with internal teams to deliver multiple projects within deadlines while maintaining creative quality.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-period">Feb 2022 — Aug 2023</div>
+        <div class="exp-location">📍 India</div>
+      </div>
+      <div>
+        <div class="exp-company">Kovaisoft Technologies Pvt Ltd</div>
+        <span class="exp-role">Creative Designer & Video Editor</span>
+        <ul class="exp-bullets">
+          <li>Served as Graphic & UI/UX Designer for the "eMedHub" project, supporting product design and user experience requirements.</li>
+          <li>Led the animation and video editing team for "V ROOM Studios," overseeing motion graphics and video production workflows.</li>
+          <li>Planned, shot, and edited video content for the "Namma Covai" YouTube channel including content strategy, scheduling, and platform management.</li>
+          <li>Managed company YouTube channels and social media handles, monitored campaign performance, and ensured consistent content delivery.</li>
+          <li>Operated and maintained video and audio production studios.</li>
+          <li>Executed multi-camera live streaming for events on YouTube and other social media platforms.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-period">Nov 2020 — Nov 2021</div>
+        <div class="exp-location">📍 India</div>
+      </div>
+      <div>
+        <div class="exp-company">Little Kingdom Senior Secondary School</div>
+        <span class="exp-role">Graphic Designer & System Administrator</span>
+        <ul class="exp-bullets">
+          <li>Managed the school's social media platforms and website updates.</li>
+          <li>Shot and edited videos of student activities, events, and classroom sessions for digital platforms.</li>
+          <li>Designed posters, event creatives, and internal communication materials.</li>
+          <li>Handled IT support and administrative system operations alongside creative responsibilities.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-period">Oct 2017 — Ongoing</div>
+        <div class="exp-location">📍 India</div>
+      </div>
+      <div>
+        <div class="exp-company">Independent Creative Projects & Film Works</div>
+        <span class="exp-role">Associate Director · Writer · Editor · Cameraman</span>
+        <ul class="exp-bullets">
+          <li>Worked on multiple short films as Associate Director, Writer, Assistant Cameraman, and Editor.</li>
+          <li>Gained hands-on experience in storytelling, direction, cinematography, sound engineering, and post-production workflows.</li>
+          <li>Collaborated with creative teams to deliver independent film projects from concept to final output.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section style="background: var(--surface); border-top: 1px solid var(--border);">
+  <p class="section-label">Education</p>
+  <h2>Academic Background</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div style="font-size:2rem; margin-bottom:1rem;">🎓</div>
+      <div class="edu-degree">Diploma in Graphic & UI/UX Design</div>
+      <div class="edu-school">Image Creative Education – Coimbatore, India</div>
+      <div class="edu-year">2019 – 2020</div>
+    </div>
+    <div class="edu-card">
+      <div style="font-size:2rem; margin-bottom:1rem;">🎓</div>
+      <div class="edu-degree">Bachelor of Computer Applications (BCA)</div>
+      <div class="edu-school">SNR Sons College of Arts and Science – Coimbatore, India</div>
+      <div class="edu-year">2016 – 2019</div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem;">
+    <p class="section-label">Languages</p>
+    <div class="lang-grid">
+      <div class="lang-card"><div class="lang-name">English</div><div class="lang-level">Fluent</div></div>
+      <div class="lang-card"><div class="lang-name">Tamil</div><div class="lang-level">Native</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <p class="section-label">Contact</p>
+  <h2>Let's Create Something<br/>Amazing Together</h2>
+  <p class="contact-sub">Based in Dubai, UAE · Available for freelance projects, collaborations & full-time roles.<br/>Reach out — I'd love to hear about your project!</p>
+  <div class="contact-cards">
+    <a href="mailto:Udhayaraj.bca@gmail.com" class="contact-card">
+      <div class="contact-card-icon">📧</div>
+      <div class="contact-card-label">Email</div>
+      <div class="contact-card-value">Udhayaraj.bca@gmail.com</div>
+    </a>
+    <a href="tel:+971506302960" class="contact-card">
+      <div class="contact-card-icon">📞</div>
+      <div class="contact-card-label">Phone / WhatsApp</div>
+      <div class="contact-card-value">+971 50 630 2960</div>
+    </a>
+    <a href="https://www.playbook.com/s/udhayarajg/Portfolio" target="_blank" class="contact-card">
+      <div class="contact-card-icon">🎨</div>
+      <div class="contact-card-label">Portfolio</div>
+      <div class="contact-card-value">playbook.com/udhayarajg</div>
+    </a>
+  </div>
+  <a href="mailto:Udhayaraj.bca@gmail.com" class="btn btn-primary" style="font-size:1rem; padding:1rem 3rem;">Say Hello 👋</a>
+</section>
+
+<footer>
+  <span>© 2026 Udhayaraj G — Creative Designer & Videographer</span>
+  <span>📍 Dubai, UAE</span>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  });
+  function animRing() {
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  document.querySelectorAll('a, button, .stat-card, .service-card, .skill-category, .brand-card, .edu-card, .contact-card, .lang-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width = '20px'; cursor.style.height = '20px'; ring.style.width = '50px'; ring.style.height = '50px'; ring.style.opacity = '0.8'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width = '12px'; cursor.style.height = '12px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5'; });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.stat-card, .skill-category, .service-card, .brand-card, .exp-item, .edu-card, .lang-card, .contact-card').forEach(el => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, padding 0.3s';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
