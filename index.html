@@ -107,7 +107,30 @@
     background-size: 60px 60px;
     opacity: 0.3;
   }
-  .hero-content { position: relative; z-index: 1; max-width: 850px; }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+  }
+  .hero-text { max-width: 600px; }
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-photo {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(74, 222, 128, 0.2);
+    object-fit: cover;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
   .hero-tag {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: rgba(74,222,128,0.12);
@@ -386,6 +409,11 @@
   }
 
   @media (max-width: 768px) {
+    .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+    .profile-photo { max-width: 350px; }
+  }
+
+  @media (max-width: 768px) {
     body { font-size: 0.95rem; }
     nav { padding: 0.8rem 1rem; }
     .nav-logo { font-size: 1rem; }
@@ -564,18 +592,23 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <h1>Creative Designer &<br/>Videographer</h1>
-    <p class="hero-sub">Senior Creative Designer & Videographer with 5+ years of experience delivering end-to-end visual solutions — from brand identity and motion graphics to video production and social media campaigns across healthcare, skincare, and tech sectors.</p>
-    <div class="hero-contact-bar">
-      <span>📍 Dubai, UAE</span>
-      <span>📧 <a href="mailto:Udhayaraj.bca@gmail.com">Udhayaraj.bca@gmail.com</a></span>
-      <span>📞 <a href="tel:+971506302960">+971 50 630 2960</a></span>
-      <span>🎨 <a href="https://www.playbook.com/s/udhayarajg/Portfolio" target="_blank">Portfolio</a></span>
+    <div class="hero-text">
+      <h1>Creative Designer &<br/>Videographer</h1>
+      <p class="hero-sub">Senior Creative Designer & Videographer with 5+ years of experience delivering end-to-end visual solutions — from brand identity and motion graphics to video production and social media campaigns across healthcare, skincare, and tech sectors.</p>
+      <div class="hero-contact-bar">
+        <span>📍 Dubai, UAE</span>
+        <span>📧 <a href="mailto:Udhayaraj.bca@gmail.com">Udhayaraj.bca@gmail.com</a></span>
+        <span>📞 <a href="tel:+971506302960">+971 50 630 2960</a></span>
+        <span>🎨 <a href="https://www.playbook.com/s/udhayarajg/Portfolio" target="_blank">Portfolio</a></span>
+      </div>
+      <div><span class="visa-badge">✅ Company Sponsored UAE Visa</span></div>
+      <div class="hero-cta">
+        <a href="https://www.playbook.com/s/udhayarajg/Portfolio" target="_blank" class="btn btn-primary">View Portfolio →</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
     </div>
-    <div><span class="visa-badge">✅ Company Sponsored UAE Visa</span></div>
-    <div class="hero-cta">
-      <a href="https://www.playbook.com/s/udhayarajg/Portfolio" target="_blank" class="btn btn-primary">View Portfolio →</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    <div class="hero-image">
+      <img src="profile.jpg" alt="Udhayaraj G - Creative Designer & Videographer" class="profile-photo"/>
     </div>
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
