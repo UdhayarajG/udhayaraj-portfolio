@@ -7,7 +7,15 @@
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&family=Bebas+Neue:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+<style>
+  @font-face {
+    font-family: 'Britannic Bold';
+    src: url('britannic-bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+</style>
 <style>
   :root {
     --bg: #0e0e0e;
@@ -63,8 +71,8 @@
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
-    font-weight: 700;
+    font-family: 'Britannic Bold', sans-serif;
+    font-weight: normal;
     font-size: 1.25rem;
     letter-spacing: 0.05em;
     color: var(--text);
@@ -112,16 +120,16 @@
     border-radius: 100px;
     margin-bottom: 2rem;
     animation: fadeUp 0.6s ease both;
-    font-weight: 700;
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-weight: normal;
+    font-family: 'Britannic Bold', sans-serif;
   }
   .hero-tag::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
   h1 {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-family: 'Britannic Bold', sans-serif;
     font-size: clamp(2rem, 7vw, 5.5rem);
-    font-weight: 700;
+    font-weight: normal;
     line-height: 1.1;
     letter-spacing: 0.05em;
     animation: fadeUp 0.6s 0.1s ease both;
@@ -132,9 +140,9 @@
   h1 em { font-style: normal; color: var(--accent); }
 
   h2 {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-family: 'Britannic Bold', sans-serif;
     font-size: clamp(1.5rem, 4vw, 3rem);
-    font-weight: 700;
+    font-weight: normal;
     letter-spacing: 0.05em;
     line-height: 1.15;
     margin-bottom: 1.5rem;
@@ -202,8 +210,8 @@
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 1rem;
-    font-weight: 700;
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-weight: normal;
+    font-family: 'Britannic Bold', sans-serif;
   }
 
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
@@ -212,9 +220,9 @@
   .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; transition: border-color 0.3s, transform 0.3s; }
   .stat-card:hover { border-color: var(--accent); transform: translateY(-4px); }
   .stat-number {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-family: 'Britannic Bold', sans-serif;
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: normal;
     color: var(--accent);
     line-height: 1;
     margin-bottom: 0.3rem;
@@ -224,8 +232,8 @@
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    font-weight: 700;
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-weight: normal;
+    font-family: 'Britannic Bold', sans-serif;
   }
 
   .marquee-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.2rem 0; overflow: hidden; background: var(--surface); }
@@ -234,9 +242,9 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-family: 'Britannic Bold', sans-serif;
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--muted);
@@ -249,8 +257,8 @@
   .skill-category { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: border-color 0.3s, transform 0.3s; }
   .skill-category:hover { border-color: var(--accent); transform: translateY(-3px); }
   .skill-cat-title {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
-    font-weight: 700;
+    font-family: 'Britannic Bold', sans-serif;
+    font-weight: normal;
     font-size: 1rem;
     color: var(--accent);
     text-transform: uppercase;
@@ -265,18 +273,18 @@
   .service-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem 2rem; transition: all 0.3s; }
   .service-card:hover { border-color: var(--accent); transform: translateY(-5px); }
   .service-num {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-family: 'Britannic Bold', sans-serif;
     font-size: 3.5rem;
-    font-weight: 700;
+    font-weight: normal;
     color: rgba(74,222,128,0.1);
     line-height: 1;
     margin-bottom: 0.8rem;
   }
   .service-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
   .service-title {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-family: 'Britannic Bold', sans-serif;
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: normal;
     margin-bottom: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -289,9 +297,9 @@
   .brand-card:hover { border-color: var(--accent); transform: translateY(-3px); }
   .brand-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
   .brand-name {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-family: 'Britannic Bold', sans-serif;
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: normal;
     margin-bottom: 0.2rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -304,8 +312,8 @@
   .exp-period { font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-bottom: 0.3rem; }
   .exp-location { font-size: 0.75rem; color: var(--muted); }
   .exp-company {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
-    font-weight: 700;
+    font-family: 'Britannic Bold', sans-serif;
+    font-weight: normal;
     font-size: 1.1rem;
     margin-bottom: 0.4rem;
     text-transform: uppercase;
@@ -319,8 +327,8 @@
     padding: 0.25rem 0.9rem;
     border-radius: 100px;
     margin-bottom: 1rem;
-    font-weight: 700;
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-weight: normal;
+    font-family: 'Britannic Bold', sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -332,9 +340,9 @@
   .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s; }
   .edu-card:hover { border-color: var(--accent); transform: translateY(-3px); }
   .edu-degree {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
+    font-family: 'Britannic Bold', sans-serif;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: normal;
     margin-bottom: 0.4rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -346,8 +354,8 @@
   .lang-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 2.5rem; text-align: center; transition: all 0.3s; }
   .lang-card:hover { border-color: var(--accent); }
   .lang-name {
-    font-family: 'Bebas Neue', 'Britannic Bold', sans-serif;
-    font-weight: 700;
+    font-family: 'Britannic Bold', sans-serif;
+    font-weight: normal;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
